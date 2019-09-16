@@ -36,8 +36,8 @@ public class CarMovement : MonoBehaviour
     void HandleRotation(){
         float RotSpeed = rotateSpeed;
 
-        // if(input.Down())
-        //     RotSpeed *= 2f;
+         if(input.Down())
+             RotSpeed *= 2f;
 
           if(input.Left()){
             this.transform.eulerAngles = Vector3.Lerp(this.transform.eulerAngles, this.transform.eulerAngles - new Vector3(0,1,0) ,RotSpeed);

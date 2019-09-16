@@ -24,7 +24,8 @@ public class CarTilting : MonoBehaviour
         }else 
             turnAngle *= .95f;
 
-        	this.transform.localRotation = Quaternion.Euler(new Vector3(0,turnAngle,0));
-
+        this.transform.localRotation = Quaternion.Euler(new Vector3(0,turnAngle,0));
+       
+        PlayerController.instance.SetTurnAngle(turnAngle);
     }
 }

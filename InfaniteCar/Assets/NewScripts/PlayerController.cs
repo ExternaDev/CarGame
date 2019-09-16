@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI  tex;
 
     public Tile currTile;
+    public float turnAngle = 0;
     public void Init(){
         onComingWaypoint =TileMover.instance.Tiles[2].waypoints[0].transform;
         NextWaytotalDistance =  Mathf.Abs((onComingWaypoint.position - this.transform.position).magnitude);
@@ -45,7 +46,7 @@ public class PlayerController : MonoBehaviour
             TotalDistance += (LargeTileCompleted * 80f);
             TotalDistance += TinyTileCompleted * 25f;
             TotalDistance += (NextWaytotalDistance -distanceToNextWay);
-       
+           
 
             tex.text = TotalDistance.ToString("00");
         }
@@ -56,7 +57,10 @@ public class PlayerController : MonoBehaviour
 
 
     }
-
+    
+    public void SetTurnAngle(float t){
+        turnAngle = Mathf.Clamp(t/25f, -1,1);
+    }
     public void HitTile( Tile tile){
 
         if(currTile.tileSize == TileSize.Big){
